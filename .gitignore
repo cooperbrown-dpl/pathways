@@ -8,3 +8,4 @@ project.assets.json
 .angular/
 *.tsbuildinfo
 node_modules/
+.DS_Store
