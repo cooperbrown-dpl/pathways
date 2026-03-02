@@ -6,6 +6,7 @@ import {FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-details',
+  standalone: true,
   imports: [ReactiveFormsModule],
   template: `
     <article>
@@ -119,7 +120,7 @@ export class Details {
     email: new FormControl(''),
   });
   constructor() {
-    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
+    const housingLocationId = this.route.snapshot.params['id'];
     this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
       this.housingLocation = housingLocation;
       this.changeDetectorRef.markForCheck();

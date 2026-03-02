@@ -9,10 +9,10 @@ export class HousingService {
     const data = await fetch(this.url);
     return (await data.json()) ?? [];
   }
-  async getHousingLocationById(id: number): Promise<HousingLocationInfo | undefined> {
+  async getHousingLocationById(id: number | string): Promise<HousingLocationInfo | undefined> {
     const data = await fetch(`${this.url}?id=${id}`);
     const locationJson = await data.json();
-    return locationJson[0] ?? {};
+    return locationJson[0] ?? undefined;
   }
   submitApplication(firstName: string, lastName: string, email: string) {
     // tslint:disable-next-line
