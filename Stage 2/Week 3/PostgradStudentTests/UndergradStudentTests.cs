@@ -6,7 +6,7 @@ namespace UndergradStudentTestsNS
     public sealed class UndergradStudentTests
     {
         [TestMethod]
-        public void CalculateGrade_ValidInouts_ReturnsWeightedAverage()
+        public void CalculateGrade_ValidInputs_ReturnsWeightedAverage()
         {
             // Arrange
             double expected = 85.3;
@@ -28,7 +28,7 @@ namespace UndergradStudentTestsNS
             // Act & Assert
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                grader2.CalculateGrade(94, -88, 80);
+                grader2.CalculateGrade(94, -1, 80);
             });
         }
 
@@ -41,7 +41,7 @@ namespace UndergradStudentTestsNS
             // Act & Assert
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                grader2.CalculateGrade(94, -88, 80);
+                grader2.CalculateGrade(94, 101, 80);
             });
         }
     }

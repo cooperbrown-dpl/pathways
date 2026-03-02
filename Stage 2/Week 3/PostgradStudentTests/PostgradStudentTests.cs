@@ -6,7 +6,7 @@ namespace PostgradStudentTests
     public sealed class PostgradStudentTests
     {
         [TestMethod]
-        public void CalculateGrade_ValidInouts_ReturnsAverage()
+        public void CalculateGrade_ValidInputs_ReturnsAverage()
         {
             // Arrange
             double expected = 83.67;
@@ -28,7 +28,7 @@ namespace PostgradStudentTests
             // Act & Assert
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                grader2.CalculateGrade(94, -88, 80);
+                grader2.CalculateGrade(94, -10, 80);
             });
         }
 
@@ -41,7 +41,7 @@ namespace PostgradStudentTests
             // Act & Assert
             Assert.ThrowsException<ArgumentOutOfRangeException>(() =>
             {
-                grader2.CalculateGrade(94, -88, 80);
+                grader2.CalculateGrade(94, 44, 101);
             });
         }
     }

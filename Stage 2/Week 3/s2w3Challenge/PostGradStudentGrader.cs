@@ -5,8 +5,6 @@
         public double CalculateGrade(double grade1, double grade2, double grade3)
         {
             Console.WriteLine("Inside Grade method of PostgradStudentGrader.");
-            Console.WriteLine("test");
-            
             // validate grades are between 0 and 100
             if (grade1 < 0 || grade1 > 100 ||
                 grade2 < 0 || grade2 > 100 ||
