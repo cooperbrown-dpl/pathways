@@ -8,6 +8,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddDbContext<TodoContext>(opt =>
     opt.UseInMemoryDatabase("TodoList"));
+builder.Services.AddDbContext<NFLTeamContext>(opt =>
+    opt.UseInMemoryDatabase("NFLTeamList"));
+builder.Services.AddDbContext<FantasyFootballPlayerContext>(opt =>
+    opt.UseInMemoryDatabase("FantasyFootballPlayerList"));
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
