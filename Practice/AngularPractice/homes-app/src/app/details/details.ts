@@ -120,7 +120,7 @@ export class Details {
     email: new FormControl(''),
   });
   constructor() {
-    const housingLocationId = this.route.snapshot.params['id'];
+    const housingLocationId = parseInt(this.route.snapshot.params['id'], 10);
     this.housingService.getHousingLocationById(housingLocationId).then((housingLocation) => {
       this.housingLocation = housingLocation;
       this.changeDetectorRef.markForCheck();
