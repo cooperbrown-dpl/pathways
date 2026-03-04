@@ -1,5 +1,6 @@
 ﻿const uri = 'api/nflteams';
 let nflTeams = [];
+let sortDirection = true;
 
 function getItems() {
     fetch(uri)
@@ -139,4 +140,18 @@ function _displayItems(data) {
     });
 
     nflTeams = data;
+}
+
+function sortData(columnName) {
+    nflTeams.sort((a, b) => {
+        if (sortDirection) {
+            return a[columnName] - b[columnName];
+        } else {
+            return b[columnName] - a[columnName];
+        }
+    });
+
+    sortDirection = !sortDirection;
+
+    _displayItems(nflTeams);
 }
