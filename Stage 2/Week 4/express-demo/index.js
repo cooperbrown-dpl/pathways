@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
     res.send('Hello World');
 });
 
-app.get('/api/courses', (req, res) => {
+app.get('/api/songs', (req, res) => {
     res.send(courses);
 });
 
@@ -24,7 +24,7 @@ app.get('/api/courses/:id', (req, res) => {
     res.send(course);
 });
 
-app.post('/api/courses', (req, res) =>{
+app.post('/api/songs', (req, res) =>{
     const { error } = validateCourse(req.body); // result.error
     if (error) return res.status(400).send(error.details[0].message);
     

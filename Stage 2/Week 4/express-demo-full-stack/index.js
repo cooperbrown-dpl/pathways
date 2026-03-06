@@ -2,6 +2,8 @@ const Joi = require('joi');
 const express = require('express');
 const app = express();
 
+app.use(express.static('public'));
+
 app.use(express.json());
 
 const songs = [
@@ -27,7 +29,7 @@ const songs = [
         id: 3,
         title: "Down",
         artist: "311",
-        album: "311",
+        album: "The Blue Album",
         releaseYear: 1995,
         genre: "Alternative Rock",
         isExplicit: false
@@ -38,47 +40,63 @@ app.get('/', (req, res) => {
     res.send('Hello Full Stack');
 });
 
-app.get('/api/courses', (req, res) => {
+app.get('/api/songs', (req, res) => {
     res.send(songs);
 });
 
-app.get('/api/courses/:id', (req, res) => {
-    const course = songs.find(c => c.id === parseInt(req.params.id));
-    if (!course) return res.status(404).send('The course with the given ID was not found.');
-    res.send(course);
+app.get('/api/songs/:id', (req, res) => {
+    const song = songs.find(s => s.id === parseInt(req.params.id));
+    if (!song) return res.status(404).send('The song with the given ID was not found.');
+    res.send(song);
 });
 
-app.post('/api/courses', (req, res) =>{
-    const { error } = validateCourse(req.body); // result.error
+// app.get('/api/songs/?isExplicit=true', (req, res) => {
+//     const song = songs.find(s => s.isExplicit === (req.query.isExplicit === 'true'));
+//     if (!song) return res.status(404).send('The explicit song was not found.');
+//     res.send(song);
+// });
+
+app.post('/api/songs', (req, res) =>{
+    const { error } = validateSong(req.body); // result.error
     if (error) return res.status(400).send(error.details[0].message);
     
-    const course = {
+    const song = {
         id: songs.length + 1,
-        name: req.body.name
+        title: req.body.title,
+        artist: req.body.artist,
+        album: req.body.album,
+        releaseYear: req.body.releaseYear,
+        genre: req.body.genre,
+        isExplicit: req.body.isExplicit
     };
-    songs.push(course);
-    res.send(course);
+    songs.push(song);
+    res.send(song);
 })
 
-app.put('/api/courses/:id', (req, res) => {
-    const course = songs.find(c => c.id === parseInt(req.params.id));
-    if (!course) return res.status(404).send('The course with the given ID was not found.');
+app.put('/api/songs/:id', (req, res) => {
+    const song = songs.find(s => s.id === parseInt(req.params.id));
+    if (!song) return res.status(404).send('The song with the given ID was not found.');
 
-    const { error } = validateCourse(req.body); // result.error
+    const { error } = validateSong(req.body); // result.error
     if (error) return res.status(400).send(error.details[0].message);
 
-    course.name = req.body.name;
-    res.send(course);
+    song.title = req.body.title;
+    song.artist = req.body.artist;
+    song.album = req.body.album;
+    song.releaseYear = req.body.releaseYear;
+    song.genre = req.body.genre;
+    song.isExplicit = req.body.isExplicit;
+    res.send(song);
 })
 
-app.delete('/api/courses/:id', (req, res) => {
-    const course = songs.find(c => c.id === parseInt(req.params.id));
-    if (!course) return res.status(404).send('The course with the given ID was not found.');
+app.delete('/api/songs/:id', (req, res) => {
+    const song = songs.find(s => s.id === parseInt(req.params.id));
+    if (!song) return res.status(404).send('The song with the given ID was not found.');
 
-    const index = songs.indexOf(course);
+    const index = songs.indexOf(song);
     songs.splice(index, 1);
 
-    res.send(course);
+    res.send(song);
 })
 
 // PORT
@@ -86,10 +104,15 @@ const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
 
 
-function validateCourse(course) {
+function validateSong(song) {
     const schema = {
-        name: Joi.string().min(3).required()
+        title: Joi.string().min(2).required(),
+        artist: Joi.string().min(2).required(),
+        album: Joi.string().min(2).required(),
+        releaseYear: Joi.number().integer().min(1900).max(new Date().getFullYear()).required(),
+        genre: Joi.string().min(2).required(),
+        isExplicit: Joi.boolean().required()
     };
 
-    return Joi.validate(course, schema);
+    return Joi.validate(song, schema);
 }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Song Collection Crud Node.JS Backend</title>
+    <link rel="stylesheet" href="/css/songs.css" />
+</head>
+<body>
+    <h1>Song Collection Crud Node.JS Backend</h1>
+
+    
+    <h3>Add</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="add-title" placeholder="New Song" required>
+        <input type="text" id="add-artist" placeholder="Artist" required>
+        <input type="text" id="add-album" placeholder="Album" required>
+        <input type="number" id="add-releaseYear" placeholder="Release Year" required>
+        <input type="text" id="add-genre" placeholder="Genre" required>
+        <input type="checkbox" id="add-isExplicit">
+        <label for="add-isExplicit">Is Explicit</label>
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-name">
+            <input type="text" id="edit-artist">
+            <input type="text" id="edit-album">
+            <input type="number" id="edit-releaseYear">
+            <input type="text" id="edit-genre">
+            <input type="checkbox" id="edit-isExplicit">
+            <label for="edit-isExplicit">Is Explicit</label>
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+    
+    <p id="counter"></p>
+    
+    <table>
+        <tr>
+            <th>Songs</th>
+            <th>Artist</th>
+            <th>Album</th>
+            <th>Release Year</th>
+            <th>Genre</th>
+            <th>Is Explicit</th>
+        </tr>
+        <tbody id="songs"></tbody>
+    </table>
+    
+    <h3>Filter Songs</h3>
+    <form action="javascript:void(0);" method="GET" onsubmit="filterSongs()">
+        <input type="checkbox" id="filter-explicit">
+        <label for="filter-explicit">Show Explicit Songs Only</label>
+        <input type="submit" value="Filter">
+    </form>
+
+    <script src="/js/songs.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+</body>
+</html>
