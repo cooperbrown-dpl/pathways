@@ -22,7 +22,7 @@ function addItem() {
 
     const item = {
         title: addTitleTextbox.value.trim(),
-        artists: addArtistTextbox.value.trim(),
+        artist: addArtistTextbox.value.trim(),
         album: addAlbumTextbox.value.trim(),
         releaseYear: addReleaseYearTextbox.value.trim(),
         genre: addGenreTextbox.value.trim(),
@@ -40,7 +40,7 @@ function addItem() {
         .then(response => response.json())
         .then(() => {
             getItems();
-            addNameTextbox.value = '';
+            addTitleTextbox.value = '';
             addArtistTextbox.value = '';
             addAlbumTextbox.value = '';
             addReleaseYearTextbox.value = '';
@@ -61,6 +61,7 @@ function deleteItem(id) {
 function displayEditForm(id) {
     const item = songs.find(item => item.id === id);
 
+    document.getElementById('edit-id').value = item.id;
     document.getElementById('edit-title').value = item.title;
     document.getElementById('edit-artist').value = item.artist;
     document.getElementById('edit-album').value = item.album;
@@ -73,11 +74,10 @@ function displayEditForm(id) {
 function updateItem() {
     const itemId = document.getElementById('edit-id').value;
     const item = {
-        id: parseInt(itemId, 10),
         title: document.getElementById('edit-title').value.trim(),
         artist: document.getElementById('edit-artist').value.trim(),
         album: document.getElementById('edit-album').value.trim(),
-        releaseYear: document.getElementById('edit-releaseYear').value.trim(),
+        releaseYear: parseInt(document.getElementById('edit-releaseYear').value.trim(), 10),
         genre: document.getElementById('edit-genre').value.trim(),
         isExplicit: document.getElementById('edit-isExplicit').checked
     };

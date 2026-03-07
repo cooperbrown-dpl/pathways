@@ -25,11 +25,11 @@
         <h3>Edit</h3>
         <form action="javascript:void(0);" onsubmit="updateItem()">
             <input type="hidden" id="edit-id">
-            <input type="text" id="edit-name">
-            <input type="text" id="edit-artist">
-            <input type="text" id="edit-album">
-            <input type="number" id="edit-releaseYear">
-            <input type="text" id="edit-genre">
+            <input type="text" id="edit-title" placeholder="Song">
+            <input type="text" id="edit-artist" placeholder="Artist">
+            <input type="text" id="edit-album" placeholder="Album">
+            <input type="number" id="edit-releaseYear" placeholder="Release Year">
+            <input type="text" id="edit-genre" placeholder="Genre">
             <input type="checkbox" id="edit-isExplicit">
             <label for="edit-isExplicit">Is Explicit</label>
             <input type="submit" value="Save">
@@ -47,15 +47,17 @@
             <th>Release Year</th>
             <th>Genre</th>
             <th>Is Explicit</th>
+            <th></th>
+            <th></th>
         </tr>
         <tbody id="songs"></tbody>
     </table>
     
     <h3>Filter Songs</h3>
     <form action="javascript:void(0);" method="GET" onsubmit="filterSongs()">
-        <input type="checkbox" id="filter-explicit">
+
         <label for="filter-explicit">Show Explicit Songs Only</label>
-        <input type="submit" value="Filter">
+        <input type="submit" id="filter-explicit" value="Filter">
     </form>
 
     <script src="/js/songs.js" asp-append-version="true"></script>
