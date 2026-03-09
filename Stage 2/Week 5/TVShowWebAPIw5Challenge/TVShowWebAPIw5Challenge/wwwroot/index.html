@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>TV Series Collection API CRUD</title>
+    <link rel="stylesheet" href="css/site.css" />
+</head>
+<body>
+    <h1>TV Series Collection API CRUD</h1>
+    <h3>Add</h3>
+    <form action="javascript:void(0);" method="POST" onsubmit="addItem()">
+        <input type="text" id="add-title" placeholder="New TV series title" required>
+        <input type="number" id="add-totalSeasons" placeholder="Total seasons" required min="1">
+        <input type="text" id="add-platform" placeholder="Platform" required>
+        <select id="add-tVRating" required>
+            <option value="">Select TV Rating</option>
+            <option value="TV-Y">TV-Y</option>
+            <option value="TV-Y7">TV-Y7</option>
+            <option value="TV-G">TV-G</option>
+            <option value="TV-PG">TV-PG</option>
+            <option value="TV-14">TV-14</option>
+            <option value="TV-MA">TV-MA</option>
+        </select>
+        <input type="checkbox" id="add-haveStartedWatching">
+        <label for="add-haveStartedWatching">Have Started Watching</label>
+        <input type="submit" value="Add">
+    </form>
+
+    <div id="editForm">
+        <h3>Edit</h3>
+        <form action="javascript:void(0);" onsubmit="updateItem()">
+            <input type="hidden" id="edit-id">
+            <input type="text" id="edit-title" placeholder="New TV series" required>
+            <input type="number" id="edit-totalSeasons" placeholder="Total seasons" required min="1">
+            <input type="text" id="edit-platform" placeholder="Platform" required>
+            <select id="edit-tVRating" required>
+                <option value="">Select TV Rating</option>
+                <option value="TV-Y">TV-Y</option>
+                <option value="TV-Y7">TV-Y7</option>
+                <option value="TV-G">TV-G</option>
+                <option value="TV-PG">TV-PG</option>
+                <option value="TV-14">TV-14</option>
+                <option value="TV-MA">TV-MA</option>
+            </select>
+            <input type="checkbox" id="edit-haveStartedWatching">
+            <label for="edit-haveStartedWatching">Have Started Watching</label>
+            <input type="submit" value="Save">
+            <a onclick="closeInput()" aria-label="Close">&#10006;</a>
+        </form>
+    </div>
+
+    <p id="counter"></p>
+
+    <table>
+        <tr>
+            <th>TV Series</th>
+            <th onclick="sortData('totalSeasons')" style="cursor:pointer">Seasons &#8597;</th>
+            <th>Platform</th>
+            <th>TV Rating</th>
+            <th>Have started watching</th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tbody id="TVSeries"></tbody>
+    </table>
+
+    <script src="js/site.js" asp-append-version="true"></script>
+    <script type="text/javascript">
+        getItems();
+    </script>
+</body>
+</html>
