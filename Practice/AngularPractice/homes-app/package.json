@@ -5,7 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "watch": "ng build --watch --configuration development"
+    "watch": "ng build --watch --configuration development",
+    "server": "json-server --watch db.json"
   },
   "private": true,
   "dependencies": {
@@ -24,6 +25,7 @@
     "@angular/cli": "^21.2.0-next",
     "@angular/compiler-cli": "^21.2.0-next",
     "@types/node": "^16.11.35",
+    "json-server": "^1.0.0-beta.12",
     "typescript": "~5.9.2"
   }
 }
