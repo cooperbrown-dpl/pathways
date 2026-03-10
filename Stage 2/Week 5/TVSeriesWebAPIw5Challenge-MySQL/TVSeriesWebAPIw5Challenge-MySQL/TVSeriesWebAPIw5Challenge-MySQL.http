@@ -1,0 +1,200 @@
+﻿@TVSeriesWebAPIw5Challenge_HostAddress = https://localhost:7015
+
+POST {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+Content-Type: application/json
+
+{
+  "title": "Breaking Bag",
+  "totalSeasons": 5 ,
+  "platform": "Netflix",
+  "yearReleased": 2008,
+  "tvRating": "TV-MA",
+  "hasStartedWatching": true
+}
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+
+###
+
+@id=1
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/{{id}}
+
+###
+
+PUT {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/{{id}}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Breaking Bad",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+PUT {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/1
+Content-Type: application/json
+
+{
+  "title": "Breaking Bad",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+PUT {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/1
+Content-Type: application/json
+
+{
+  "title": "Breaking Bad",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+DELETE {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/{{1}}
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+
+###
+
+POST {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+Content-Type: application/json
+
+{
+  "title": "Breaking Bad",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+DELETE {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/1
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+
+###
+
+POST {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+Content-Type: application/json
+
+{
+  "title": "Breaking Bad",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+POST {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+Content-Type: application/json
+
+{
+  "title": "Better Call Saul",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+PUT {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "title": "Pluribus",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+
+###
+
+POST {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+Content-Type: application/json
+
+{
+  PUT {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/3
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Pluribus",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+}
+
+###
+
+POST {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Pluribus",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+PUT {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/1
+Content-Type: application/json
+
+{
+  "id": 1,
+  "title": "Breaking Bad",
+  "totalSeasons": 5,
+  "platform": "Netflix",
+  "tvRating": "TV-MA",
+  "haveStartedWatching": true
+}
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+
+###
+
+DELETE {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/1
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows/{{id}}
+
+###
+
+GET {{TVSeriesWebAPIw5Challenge_HostAddress}}/api/tvshows
+
+###
