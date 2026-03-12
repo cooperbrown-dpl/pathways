@@ -24,7 +24,7 @@ namespace TVSeriesWebAPIw5Challenge.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<TVShow>>> GetTVSeries()
         {
-            return await _context.TVSeries.ToListAsync();
+            return await _context.TVSeries.AsNoTracking().ToListAsync();
         }
 
         // GET: api/TVShows/5
