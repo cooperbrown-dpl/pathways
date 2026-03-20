@@ -51,14 +51,24 @@ class Program{
                 studentList.Add(student);
             }
 
+
+            double classAverageTotal = 0;
+            double classAverage = 0;
+            double maxAverage = 0;
             Console.WriteLine("Summary:");
             foreach (var student in studentList)
             {
                 double averageScore = GetAverage(student.Test1, student.Test2, student.Test3);
                 string grade = GetGrade(averageScore);
+                classAverageTotal += averageScore;
+                classAverage = classAverageTotal / studentList.Count;
+                maxAverage = averageScore > maxAverage ? averageScore : maxAverage;
 
                 Console.WriteLine($"{student.Name}: Average Score: {Math.Round(averageScore, 2)} Grade: {grade}");
-            }
+            };
+
+            Console.WriteLine($"Class Average: {Math.Round(classAverage, 2)}");
+            Console.WriteLine($"Highest Student Average: {Math.Round(maxAverage, 2)}");
 
             Console.WriteLine("Do you want to run the program again? (yes/no)");
             var userChoice = Console.ReadLine().ToLower();
