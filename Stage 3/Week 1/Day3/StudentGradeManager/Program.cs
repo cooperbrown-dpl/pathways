@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿namespace StudentGradeManager;
 
-namespace StudentGradeManager;
-
-class Program{
+class Program
+{
     static void Main()
     {
         bool userIsDone = false;
@@ -15,11 +13,11 @@ class Program{
         {
             do
             {
-            Console.WriteLine("How many students do you want to enter? (min 1, max 10)");
+                Console.WriteLine("How many students do you want to enter? (min 1, max 10)");
 
-            var input = Console.ReadLine();
+                var input = Console.ReadLine();
 
-            if (int.TryParse(input, out numOfStudents))
+                if (int.TryParse(input, out numOfStudents))
                 {
                     if (numOfStudents > 0 && numOfStudents < 11)
                     {
@@ -34,7 +32,7 @@ class Program{
                 {
                     Console.WriteLine("Invalid input, please enter a valid number 1 through 10.");
                 }
-            } while(!isValid);
+            } while (!isValid);
 
             Console.WriteLine($"{numOfStudents} students entered.");
 
@@ -51,7 +49,6 @@ class Program{
                 studentList.Add(student);
             }
 
-
             double classAverageTotal = 0;
             double classAverage = 0;
             double maxAverage = 0;
@@ -65,7 +62,8 @@ class Program{
                 maxAverage = averageScore > maxAverage ? averageScore : maxAverage;
 
                 Console.WriteLine($"{student.Name}: Average Score: {Math.Round(averageScore, 2)} Grade: {grade}");
-            };
+            }
+            ;
 
             Console.WriteLine($"Class Average: {Math.Round(classAverage, 2)}");
             Console.WriteLine($"Highest Student Average: {Math.Round(maxAverage, 2)}");
@@ -77,16 +75,16 @@ class Program{
                 Console.WriteLine("Exiting program, goodbye!");
                 userIsDone = true;
             }
-        } while(!userIsDone);
+        } while (!userIsDone);
     } //end of Main
 
-static int GetScore(string test)
+    static int GetScore(string test)
     {
         int testScore = 0;
         while (true)
         {
             Console.WriteLine($"Please enter the {test} score (0-100):");
-            if (int.TryParse(Console.ReadLine(), out testScore) && testScore >=0 && testScore <= 100)
+            if (int.TryParse(Console.ReadLine(), out testScore) && testScore >= 0 && testScore <= 100)
             {
                 return testScore;
             }
@@ -127,4 +125,4 @@ static int GetScore(string test)
             return "F";
         }
     }
-} //end of program
+}

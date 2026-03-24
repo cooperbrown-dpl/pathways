@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-var people = new List<Person>
+﻿var people = new List<Person>
 {
     new("Mia",     24, "Berlin",     true,  new List<string>{ "skiing", "gaming", "coffee" }),
     new("Lucas",   31, "Lisbon",     false, new List<string>{ "surfing", "guitar" }),
     new("Aisha",   19, "Toronto",    true,  new List<string>{ "photography", "hiking", "gaming" }),
     new("Noah",    42, "Austin",     true,  new List<string>{ "bbq", "motorcycles", "coffee", "gaming" }),
     new("Sofia",   28, "Barcelona",  false, new List<string>{ "dancing", "yoga" }),
+    new("Autumn",  0, "Berlin",     false,  new List<string>{ "skiing", "gaming" }),
     new("Kai",     22, "Seoul",      true,  new List<string>{ "gaming", "street food", "photography" })
 };
 
@@ -45,20 +42,19 @@ foreach (var person in peopleUnder25)
 // 4. All hobbies from everyone (one big flat list) (hint: SelectMany)
 var everyonesHobbies = people.SelectMany(p => p.Hobbies);
 Console.WriteLine("All hobbies from everyone:");
-foreach(var person in everyonesHobbies)
+foreach (var hobby in everyonesHobbies)
 {
-    Console.WriteLine($"{person.Name}'s hobbies include: {person.Hobbies}");
+    Console.WriteLine($"- {hobby}");
 }
-
 
 // 5. People who like both coffee and gaming
 //var coffeeAndGaming = people.Where(p => p.likesCoffee && p.Select)
 
 // 6. The person with the most hobbies (name + count)
-var max = people.Max(x => x.Hobbies.Count);
+var max = people.Max(p => p.Hobbies.Count);
 Console.WriteLine($"max = {max}");
 
-var result = poeple.Where(x => x.Hobbies.Count == max);
+var result = people.Where(x => x.Hobbies.Count == max);
 
 foreach (var person in result)
 {
@@ -66,7 +62,26 @@ foreach (var person in result)
 }
 
 // 7. Group by LikesCoffee → show count in each group
+var coffeeGroups = people.GroupBy(p => p.LikesCoffee);
+
+Console.WriteLine("Group counts by Coffee Perference:");
+foreach (var group in coffeeGroups)
+{
+    string status = group.Key ? "Likes Coffee" : "Doesn't Like Coffee";
+    Console.WriteLine($"{status}: {group.Count()}");
+}
+
 // 8. Cities that have ≥ 2 people
+var bigCities = people
+    .GroupBy(p => p.City)
+    .Where(g => g.Count() >= 2);
+
+Console.WriteLine("Cities with 2 or more people:");
+foreach (var group in bigCities)
+{
+    Console.WriteLine($"- {group.Key} ({group.Count()} people)");
+}
+
 // 9. (bonus evil) People sorted by number of
 
 //Can be useful to rewrite these as for loops
