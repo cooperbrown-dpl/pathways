@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-var people = new List<Person>
+﻿var people = new List<Person>
 {
     new("Mia",    24, "Berlin",   true,  3),
     new("Lucas",  31, "Lisbon",   false, 2),
