@@ -43,7 +43,7 @@ var emma = context.Customers
 var order = new Order
 {
     OrderDate = DateTime.Now,
-    TotalAmount = 149.99m,
+    TotalAmount = 105.79m,
     Status = "Completed",
     CustomerId = emma.Id
 };
@@ -85,6 +85,13 @@ context.Customers.Remove(removeLiam);
 context.SaveChanges();
 Console.WriteLine("Liam Chen has been removed.");
 
+//Remove an order
+//new Order { OrderDate = DateTime.Now.AddDays(-30), TotalAmount = 249.99m, Status = "Completed" },
+var removeOrder = context.Orders.FirstOrDefault(o => o.TotalAmount == 249.99m);
+context.Orders.Remove(removeOrder);
+context.SaveChanges();
+System.Console.WriteLine("Emmas order has been removed.");
+
 //Activity 10: List all customers sorted by last name X
 var customersByLastName = context.Customers.OrderBy(c => c.LastName).ToList();
 
@@ -92,6 +99,9 @@ foreach (var c in customersByLastName)
 {
     Console.WriteLine($"- {c.LastName}, {c.FirstName}");
 }
+
+var totalRevenue2 = context.Orders.Sum(o => o.TotalAmount);
+Console.WriteLine($"Total revenue: ${totalRevenue2}");
 
 
 // ====================== HELPER METHOD ======================
