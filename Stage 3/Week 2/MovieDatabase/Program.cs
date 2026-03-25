@@ -97,7 +97,13 @@ namespace MovieDbDemo
 
             // 4. Update Movie Rating
             // Task: Change the rating of "The Dark Knight" to 9.2.
-
+            var darkKnight = context.Movies.FirstOrDefault(m => m.Title == "The Dark Knight");
+            if (darkKnight != null)
+            {
+                darkKnight.Rating = 9.2;
+                context.SaveChanges();
+                Console.WriteLine("Rating of The Dark Knight updated to 9.2");
+            }
 
             // 5. Remove a Movie
             // Task: Remove the movie "Parasite" from the database.
@@ -112,9 +118,6 @@ namespace MovieDbDemo
             }
 
         }
-
-
-
 
         static void SeedData(MovieContext context)
         {
