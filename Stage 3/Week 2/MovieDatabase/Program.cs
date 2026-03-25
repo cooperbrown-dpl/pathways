@@ -106,6 +106,7 @@ namespace MovieDbDemo
             if (parasite != null)
             {
                 context.Movies.Remove(parasite);
+                context.SaveChanges();
 
                 Console.WriteLine("Movie 'Parasite' has been removed.");
             }
