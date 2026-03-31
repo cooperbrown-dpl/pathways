@@ -19,7 +19,6 @@ System.Console.WriteLine("All sequential downloads have been completed!");
 await RunParallel();
 System.Console.WriteLine("All parallel downloads completed!");
 
-
 async Task DownloadFile(string filename, int seconds)
 {
     System.Console.WriteLine($"Starting download: {filename}");
@@ -57,6 +56,5 @@ async Task DownloadWithProgress(string filename)
     System.Console.WriteLine("Downloading report.pdf... 75% complete");
     await Task.Delay(1000);
     System.Console.WriteLine("Downloading report.pdf... 100% complete");
-    System.Console.WriteLine($"Download completed: {filename}");
-
+    System.Console.WriteLine($"Download completed: {filename}")
 }
