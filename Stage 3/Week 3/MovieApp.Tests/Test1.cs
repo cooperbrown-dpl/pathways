@@ -1,4 +1,6 @@
-﻿namespace MovieApp.Tests;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+
+namespace MovieApp.Tests;
 
 [TestClass]
 public class MovieAccessTests
@@ -15,7 +17,13 @@ public class MovieAccessTests
     public void AddMovie_IncreasesMovieCount_ReturnsCorrectCount()
     {
         // Arrange
-        var movie = new Movie { Title = "Dumb and Dumber", Genre = "Comedy", ReleaseYear = 1994, Rating = 9.5m };
+        var movie = new Movie
+        {
+            Title = "Dumb and Dumber",
+            Genre = "Comedy",
+            ReleaseYear = 1994,
+            Rating = 9.5m
+        };
 
         // Act
         _movieAccess.AddMovie(movie);
@@ -30,7 +38,13 @@ public class MovieAccessTests
     public void GetMovieById_ValidId_ReturnsCorrectMovie()
     {
         // Arrange
-        var movie = new Movie { Title = "Dumb and Dumber", Genre = "Comedy", ReleaseYear = 1994, Rating = 9.5m };
+        var movie = new Movie
+        {
+            Title = "Dumb and Dumber",
+            Genre = "Comedy",
+            ReleaseYear = 1994,
+            Rating = 9.5m
+        };
         _movieAccess.AddMovie(movie);
 
         // Act
@@ -42,7 +56,7 @@ public class MovieAccessTests
 
     // Test 3: GetMoviesByGenre returns only movies of that genre
     [TestMethod]
-    public void GetMoviesByGenre_ValidGenre_ReturnsOnlyMatchingGenre()
+    public void GetMoviesByGenre_GenreIsValidWithTwoMovies_ReturnOnlyMoviesInGenre()
     {
         // Arrange
         var movie1 = new Movie
@@ -70,6 +84,8 @@ public class MovieAccessTests
         // Assert
         Assert.AreEqual(2, comedyMovies.Count);
         Assert.IsTrue(comedyMovies.All(m => m.Genre.Equals("Comedy")));
+        Microsoft.VisualStudio.TestTools.UnitTesting.Assert.AreEqual(1, 1);
+
     }
 
     // Test 4: DeleteMovie returns true when movie exists and is deleted
@@ -115,5 +131,15 @@ public class MovieAccessTests
 
         // Assert
         Assert.AreEqual(2, allMovies.Count);
+    }
+
+    [TestClass]
+    public class Test1
+    {
+        [TestMethod]
+        public void TestMethod1()
+        {
+            Assert.AreEqual(1, 1);
+        }
     }
 }
